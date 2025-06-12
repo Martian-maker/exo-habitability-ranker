@@ -6,10 +6,6 @@ import numpy as np
 import os
 
 from ingest import download_nasa_data
-
-# you can define this in preprocess.py
-from preprocess import process_exoplanets
-
 from preprocess import process_exoplanets
 
 @st.cache_data
