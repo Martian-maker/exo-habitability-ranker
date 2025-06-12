@@ -31,7 +31,6 @@ filtered = df[df["habit_score"] >= score_min].reset_index(drop=True)
 
 # === Table ===
 st.markdown(f"### 🔍 {len(filtered)} Planets with Habitability ≥ {score_min}")
-st.dataframe(
     st.dataframe(
     filtered[["pl_name", "radius", "temp", "star_lum", "habit_score"]].rename(columns={
         "pl_name": "Planet Name",
