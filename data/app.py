@@ -64,7 +64,13 @@ if planet_name:
     else:
         row = match.iloc[0]
         labels = ["radius", "temp", "flux"]
-        values = [row[c] for c in labels]
+        missing = [c for c in labels if c not in row]
+        if missing:
+            st.error(f"Missing column(s) for radar plot: {', '.join(missing)}")
+            st.stop()
+        else:
+            values = [row[c] for c in labels]
+
         earth_values = [1.0, 288.0, 1.0]  # Earth baseline
 
 
