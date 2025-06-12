@@ -1,15 +1,12 @@
 
-# ingest.py
-import requests
-import pathlib
-import datetime
+import pandas as pd
+import os
 
-URL = "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+*+from+ps&format=csv"
-today = datetime.date.today()
-out_path = pathlib.Path("data") / f"ps_{today}.csv"
-out_path.parent.mkdir(exist_ok=True)
+def download_nasa_data():
+    url = "https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+*+from+pscomppars&format=csv"
+    dir_path = os.path.dirname(os.path.abspath(__file__))
+    output_path = os.path.join(dir_path, "ps_latest.csv")
+    df = pd.read_csv(url)
+    df.to_csv(output_path, index=False)
+    return output_path
 
-print(f"Downloading exoplanet data to {out_path}")
-resp = requests.get(URL, timeout=60)
-out_path.write_bytes(resp.content)
-print("✅ Done.")
