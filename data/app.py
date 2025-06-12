@@ -64,9 +64,9 @@ if planet_name:
         st.warning("Planet not found. Please check the name or spelling.")
     else:
         row = match.iloc[0]
-        labels = ["radius", "temp", "star_lum"]
-        values = [row[c] for c in labels]
-        earth_values = [1.0, 288.0, 1.0]  # Earth baseline
+        labels = ["Radius (R⊕)", "Temperature (K)", "Stellar Flux (normalized)"]
+        values = [row["radius"], row["temp"], row["star_lum"]]
+        earth_values = [1.0, 288.0, 1.0]        # Earth baseline
 
         if normalize_by == "Dataset Range":
             # Normalize using min-max of dataset
