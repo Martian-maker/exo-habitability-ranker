@@ -14,12 +14,6 @@ csv_path = download_nasa_data()
 df = process_exoplanets(csv_path)
 
 
-dir_path = os.path.dirname(os.path.abspath(__file__))
-csv_path = os.path.join(dir_path, "ranked_planets.csv")
-
-df = pd.read_csv(csv_path)
-
-
 st.set_page_config(page_title="Exoplanet Habitability Dashboard", layout="wide")
 
 # === Load scored CSV ===
