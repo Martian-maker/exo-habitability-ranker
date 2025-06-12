@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+st.set_page_config(page_title="Exoplanet Habitability Dashboard", layout="wide")
+
 from ingest import download_nasa_data
 from preprocess import process_exoplanets  # you can define this
 
