@@ -16,13 +16,6 @@ df = process_exoplanets(csv_path)
 
 st.set_page_config(page_title="Exoplanet Habitability Dashboard", layout="wide")
 
-# === Load scored CSV ===
-@st.cache_data
-def load_data():
-    return pd.read_csv("ranked_planets.csv")
-
-df = load_data()
-
 # === Header ===
 st.title("🪐 Exoplanet Habitability Dashboard")
 st.markdown("""
