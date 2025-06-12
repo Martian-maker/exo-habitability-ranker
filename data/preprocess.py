@@ -5,7 +5,7 @@ import os
 import pathlib
 
 def process_exoplanets(input_path):
-df = pd.read_csv(input_path)
+    df = pd.read_csv(input_path)
 
     # Keep & rename only the columns we need
     df = df.rename(columns={
