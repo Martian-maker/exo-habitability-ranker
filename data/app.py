@@ -33,7 +33,7 @@ st.dataframe(
         "pl_name": "Planet Name",
         "radius": "Radius (Earth Radii)",
         "temp": "Surface Temperature (K)",
-        "flux": "Estimated Flux",
+        "flux": "Flux(Earth Flux)",
         "habit_score": "Habitability Score"
     }),
     use_container_width=True
