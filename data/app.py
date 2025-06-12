@@ -14,6 +14,8 @@ def get_processed_data():
     return process_exoplanets(csv_path)
 
 df = get_processed_data()
+st.subheader("DEBUG: Raw Data Preview")
+st.write(df.head())
 
 
 # === Header ===
