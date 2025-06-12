@@ -32,7 +32,7 @@ filtered = df[df["habit_score"] >= score_min].reset_index(drop=True)
 # === Table ===
 st.markdown(f"### 🔍 {len(filtered)} Planets with Habitability ≥ {score_min}")
 st.dataframe(
-    filtered[["pl_name", "radius", "temp", "flux", "habit_score"]],
+    filtered[["pl_name", "radius", "temp", "star_lum", "habit_score"]],
     use_container_width=True
 )
 
@@ -57,7 +57,7 @@ if planet_name:
         st.warning("Planet not found. Please check the name or spelling.")
     else:
         row = match.iloc[0]
-        labels = ["radius", "temp", "flux"]
+        labels = ["radius", "temp", "star_lum"]
         values = [row[c] for c in labels]
         earth_values = [1.0, 288.0, 1.0]  # Earth baseline
 
