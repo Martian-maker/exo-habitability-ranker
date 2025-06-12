@@ -1,6 +1,5 @@
-import streamlit as st
-
 st.set_page_config(page_title="Exoplanet Habitability Dashboard", layout="wide")
+import streamlit as st
 
 import pandas as pd
 import matplotlib.pyplot as plt
