@@ -4,6 +4,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+from ingest import download_nasa_data
+from preprocess import process_exoplanets  # you can define this
+
+# Step 1: Download fresh data
+raw_csv_path = download_nasa_data()
+
+# Step 2: Preprocess it (returns DataFrame)
+df = process_exoplanets(raw_csv_path)
+
+
 dir_path = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(dir_path, "ranked_planets.csv")
 
