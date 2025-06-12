@@ -1,1 +1,19 @@
+# ── Data files generated at runtime ─────────────────────────────────────────────
+*.csv              # NASA archive, ranked_planets.csv, etc.
+*.parquet
+*.txt
+
+# ── Jupyter artefacts ──────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Python build / cache files ─────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+
+# ── Streamlit local cache (created when you run app locally) ───────────────────
+.streamlit/
+
+# ── Misc OS cruft ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
 
