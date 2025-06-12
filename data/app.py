@@ -7,7 +7,7 @@ import os
 
 
 from ingest import download_nasa_data
-from preprocess import process_exoplanets
+
 @st.cache_data
 def get_processed_data():
     csv_path = download_nasa_data()
