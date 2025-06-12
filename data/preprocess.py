@@ -20,7 +20,7 @@ def process_exoplanets(input_path):
     df = df[["pl_name", "radius", "temp", "star_temp", "star_lum"]].dropna()
     
     # Compute incident flux (relative to Earth)
-    df["flux"] = df["star_lum"] / ((df["star_temp"] / 5778) ** 2)
+    df["flux"] = df["star_lum"] / ((df["pl_orbsmax"] / 5778) ** 2)
 
     # Prepare for TOPSIS
     features = ["radius", "temp", "flux"]
