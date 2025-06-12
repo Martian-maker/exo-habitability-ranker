@@ -16,9 +16,6 @@ def get_processed_data():
 df = get_processed_data()
 
 
-
-st.set_page_config(page_title="Exoplanet Habitability Dashboard", layout="wide")
-
 # === Header ===
 st.title("🪐 Exoplanet Habitability Dashboard")
 st.markdown("""
