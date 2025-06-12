@@ -14,6 +14,7 @@ def get_processed_data():
     csv_path = download_nasa_data()
     return process_exoplanets(csv_path)
 
+df = get_processed_data()
 
 # === Header ===
 st.title("🪐 Exoplanet Habitability Dashboard")
