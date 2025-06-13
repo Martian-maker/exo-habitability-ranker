@@ -9,7 +9,7 @@ import os
 from ingest import download_nasa_data
 from preprocess import process_exoplanets
 
-- @st.cache_data
+@st.cache_data
 def get_processed_data():
     csv_path = download_nasa_data()
     return process_exoplanets(csv_path)
@@ -49,11 +49,6 @@ normalize_by = st.radio(
     index=0,
     horizontal=True
 )
-
-df["star_lum_log"]: "star_lum"
-df["antilog_star_lum"]: 10**df["star_lum"]
-st.subheader("🚨 Debug: First 5 rows of (star_lum_log, star_lum, orb_distance, flux)")
-st.write(df[["star_lum_log","antilog_star_lum","orb_distance","flux"]].head())
 
 # === Select planet for radar plot ===
 planet_name = st.text_input("🔎 Type a planet name from the list as printed for its " \
