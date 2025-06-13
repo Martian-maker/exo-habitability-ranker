@@ -53,8 +53,8 @@ normalize_by = st.radio(
     horizontal=True
 )
 
-"star_lum_log": "star_lum"
-"antilog_star_lum": 10**df[star_lum]
+df["star_lum_log"]: "star_lum"
+df["antilog_star_lum"]: 10**df["star_lum"]
 st.subheader("🚨 Debug: First 5 rows of (star_lum_log, star_lum, orb_distance, flux)")
 st.write(df[["star_lum_log","antilog_star_lum","orb_distance","flux"]].head())
 
