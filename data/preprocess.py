@@ -21,13 +21,20 @@ def process_exoplanets(input_path):
     df.dropna(subset=["pl_name", "radius", "temp", "star_temp", "star_lum", "orb_distance"], inplace=True)
     
     # Compute incident flux (relative to Earth)
-    df["flux"] = 2    #(10**(df["star_lum"])) / (df["orb_distance"] **2)
+    df["flux"] = (10**(df["star_lum"])) / (df["orb_distance"] **2)
     #star_lum here is a logarithmic tar luminosity relative to the sun so antiloging first
 
     # Prepare for TOPSIS
     features = ["radius", "temp", "flux"]
-    X = df[features]
-    X = (X - X.mean()) / X.std()   # z-score
+    X = df[features].copy()
+    
+    #X = (X - X.mean()) / X.std() -- z-score (this is the part of the previous code)
+
+    # Normalize relative to Earth and take absolute difference
+    # Earth‐reference vector (R⊕, T⊕ in K, F⊕)
+    earth = np.array([1.0, 288.0, 1.0])
+    # Fractional distance from Earth in each dimension
+    X = np.abs(X.values / earth - 1.0)
 
     # TOPSIS function
     def topsis(matrix, weights, benefit):
@@ -41,9 +48,10 @@ def process_exoplanets(input_path):
         return score
 
     weights = np.array([0.4, 0.3, 0.3])      # radius, temp, flux
-    benefit = np.array([False, False, True]) # flux is “more is better”
+    #benefit = np.array([False, False, True]) -- flux is “more is better” (part of previous code)
+    benefit = np.array([False, False, False]) # small difference from earth is better”
 
-    df["habit_score"] = topsis(X.values, weights, benefit)
+    df["habit_score"] = topsis(X, weights, benefit)
     return df.sort_values("habit_score", ascending=False)
 
 
