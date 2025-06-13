@@ -21,7 +21,7 @@ def process_exoplanets(input_path):
     df.dropna(subset=["pl_name", "radius", "temp", "star_temp", "star_lum", "orb_distance"], inplace=True)
     
     # Compute incident flux (relative to Earth)
-    df["flux"] = (10**df["star_lum"]) / (df["orb_distance"]**2)
+    df["flux"] = (df["star_lum"]) / (df["orb_distance"]**2)
     #star_lum here is a logarithmic tar luminosity relative to the sun so antiloging first
 
     # Prepare for TOPSIS
