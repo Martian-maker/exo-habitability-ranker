@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+# force cache clear (DEV only)
+st.cache_data.clear()
+
 
 from ingest import download_nasa_data
 from preprocess import process_exoplanets
@@ -15,6 +18,9 @@ def get_processed_data():
     return process_exoplanets(csv_path)
 
 df = get_processed_data()
+
+
+
 
 # === Header ===
 st.title("🪐 Exoplanet Habitability Dashboard")
@@ -47,6 +53,10 @@ normalize_by = st.radio(
     horizontal=True
 )
 
+"star_lum_log": "star_lum"
+"antilog_star_lum": 10**df[star_lum]
+st.subheader("🚨 Debug: First 5 rows of (star_lum_log, star_lum, orb_distance, flux)")
+st.write(df[["star_lum_log","antilog_star_lum","orb_distance","flux"]].head())
 
 # === Select planet for radar plot ===
 planet_name = st.text_input("🔎 Type a planet name from the list as printed for its " \
