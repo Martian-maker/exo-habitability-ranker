@@ -18,7 +18,7 @@ def process_exoplanets(input_path):
     })
 
     # Drop rows with missing required fields
-    df.dropna(subset=["pl_name", "radius", "temp", "star_temp", "star_lum", "orb_distance"], inplace=true)
+    df.dropna(subset=["pl_name", "radius", "temp", "star_temp", "star_lum", "orb_distance"], inplace=True)
     
     # Compute incident flux (relative to Earth)
     df["flux"] = (10**df["star_lum"]) / (df["orbit"]**2)
