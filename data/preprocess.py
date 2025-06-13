@@ -13,14 +13,16 @@ def process_exoplanets(input_path):
         "pl_rade": "radius",
         "pl_eqt": "temp",
         "st_teff": "star_temp",
-        "st_lum": "star_lum"
+        "st_lum": "star_lum",
+        "pl_orbsmax": "orb_distance"
     })
 
     # Drop rows with missing required fields
-    df = df[["pl_name", "radius", "temp", "star_temp", "star_lum"]].dropna()
+    required_cols = ["pl_name", "radius", "temp", "star_temp", "star_lum", "orb_distance"]
+    df[required_cols].dropna
     
     # Compute incident flux (relative to Earth)
-    df["flux"] = df["star_lum"] / ((df["pl_orbsmax"]) ** 2)
+    df["flux"] = df["star_lum"]/((df["orb_distance"])**2)
 
     # Prepare for TOPSIS
     features = ["radius", "temp", "flux"]
